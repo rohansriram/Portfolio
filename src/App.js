@@ -3,7 +3,7 @@ import "./App.css";
 import { data } from "./data";
 import NavBar from "./component/NavBar";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-
+import createHistory from 'history/createBrowserHistory';
 import {Redirect} from 'react-router';
 import About from "./component/About";
 import Work from "./component/Work";
@@ -21,12 +21,12 @@ const App = () => {
 				<NavBar />
 				<Switch>
 				{/* <Link to="/About" /> */}
-					<Redirect from='/#/about' to="/About" />
-					<Redirect from='/#/work' to="/Work" />
+					{/* <Redirect from='/#/about' to="/About" />
+					<Redirect from='/#/work' to="/Work" /> */}
 				    <Route exact path='/' component={About} />
 					<Route exact path='/Portfolio' component={About} />
-					<Route exact path='/About' component={About} />
-					<Route exact path='/Work' component={Work} />
+					<Route exact path={process.env.PUBLIC_URL + '/About'} component={About} />
+					<Route exact path={process.env.PUBLIC_URL + '/Work'} component={Work} />
 					<Route exact path='/Skills' component={Skills} />
 					<Route exact path='/Projects' component={Projects} />
 					<Route exact path='/Contact' component={Contact} />

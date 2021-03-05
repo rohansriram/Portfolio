@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { data } from "./data";
 import NavBar from "./component/NavBar";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { HashRouter, Switch, Route, Link } from "react-router-dom";
 
 import About from "./component/About";
 import Work from "./component/Work";
@@ -16,7 +16,7 @@ const App = () => {
 	console.log(data.content);
 	return (
 		<div>
-			<BrowserRouter basename ='/'>
+			<HashRouter basename ='/'>
 				<NavBar />
 				<Switch>
 				{/* <Link to="/About" /> */}
@@ -30,7 +30,7 @@ const App = () => {
 					<Route exact path='/Contact' component={Contact} />
 				</Switch>
 				<Fotter />
-			</BrowserRouter>
+			</HashRouter>
 		</div>
 	);
 };

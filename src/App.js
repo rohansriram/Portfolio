@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import { data } from "./data";
 import NavBar from "./component/NavBar";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import createHistory from 'history/createBrowserHistory';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import {Redirect} from 'react-router';
 import About from "./component/About";
 import Work from "./component/Work";
@@ -17,7 +18,7 @@ const App = () => {
 	console.log(data.content);
 	return (
 		<div>
-			<BrowserRouter basename ={process.env.PUBLIC_URL}>
+			<Router history ={history} basename = {process.env.PUBLIC_URL}>
 				<NavBar />
 				<Switch>
 				{/* <Link to="/About" /> */}
@@ -32,9 +33,12 @@ const App = () => {
 					<Route exact path='/Contact' component={Contact} />
 				</Switch>
 				<Fotter />
-			</BrowserRouter>
+			</Router>
 		</div>
 	);
 };
+export const history = createBrowserHistory({
+    basename: process.env.PUBLIC_URL
+});
 
 export default App;

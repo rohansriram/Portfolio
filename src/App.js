@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import { data } from "./data";
 import NavBar from "./component/NavBar";
-import { HashRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
+import {Redirect} from 'react-router';
 import About from "./component/About";
 import Work from "./component/Work";
 import Projects from "./component/Projects";
@@ -16,11 +17,12 @@ const App = () => {
 	console.log(data.content);
 	return (
 		<div>
-			<HashRouter basename ='/'>
+			<BrowserRouter basename ={process.env.PUBLIC_URL}>
 				<NavBar />
 				<Switch>
 				{/* <Link to="/About" /> */}
-					
+					<Redirect from='/#/about' to="/About" />
+					<Redirect from='/#/work' to="/Work" />
 				    <Route exact path='/' component={About} />
 					<Route exact path='/Portfolio' component={About} />
 					<Route exact path='/About' component={About} />
@@ -30,7 +32,7 @@ const App = () => {
 					<Route exact path='/Contact' component={Contact} />
 				</Switch>
 				<Fotter />
-			</HashRouter>
+			</BrowserRouter>
 		</div>
 	);
 };
